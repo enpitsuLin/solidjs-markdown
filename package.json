@@ -1,0 +1,41 @@
+{
+  "name": "solid-remark",
+  "version": "0.1.0",
+  "description": "",
+  "keywords": [
+    "solid",
+    "markdown",
+    "mdx",
+    "solid-component",
+    "component",
+    "remark"
+  ],
+  "license": "MIT",
+  "author": "enpitsulin <enpitsulin@gmail.com>",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "solid": "./dist/source/index.jsx",
+      "import": "./dist/esm/index.js",
+      "browser": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "node": "./dist/cjs/index.js"
+    }
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c rollup.config.js"
+  },
+  "devDependencies": {
+    "rollup": "^3.15.0",
+    "rollup-preset-solid": "^2.0.1",
+    "solid-js": "^1.6.10",
+    "typescript": "^4.9.5"
+  }
+}
