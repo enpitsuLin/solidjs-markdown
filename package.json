@@ -35,6 +35,8 @@
     "style": "prettier -w \"./src/**/*.{ts,tsx}\""
   },
   "devDependencies": {
+    "@types/hast": "^2.3.4",
+    "@types/unist": "^2.0.6",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
     "eslint": "^8.34.0",
@@ -54,5 +56,17 @@
     "printWidth": 100,
     "tabWidth": 2,
     "bracketSpacing": true
+  },
+  "dependencies": {
+    "comma-separated-tokens": "^2.0.3",
+    "property-information": "^6.2.0",
+    "remark-gfm": "^3.0.1",
+    "remark-parse": "^10.0.1",
+    "remark-rehype": "^10.1.0",
+    "space-separated-tokens": "^2.0.2",
+    "style-to-object": "^0.4.1",
+    "unified": "^10.1.2",
+    "unist-util-visit": "^4.1.2",
+    "vfile": "^5.3.7"
   }
 }
