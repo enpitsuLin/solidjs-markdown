@@ -1,6 +1,8 @@
 /// <reference types="vitest/globals"/>
 import { render } from '@solidjs/testing-library'
 import Markdown from '../src/index'
+import type { Root } from 'hast'
+import type { Plugin } from 'unified'
 
 test('can render the most basic of documents (single paragraph)', () => {
   const { asFragment } = render(() => <Markdown>Test</Markdown>)
@@ -10,6 +12,18 @@ test('can render the most basic of documents (single paragraph)', () => {
 test('uses passed class for root component', () => {
   const { asFragment } = render(() => <Markdown class="md">Test</Markdown>)
   assert.equal(asFragment(), '<div class="md"><p>Test</p></div>')
+})
+
+test('should crash on a plugin replacing `root`', () => {
+  const input = 'a'
+  // @ts-expect-error: runtime.
+  const plugin: Plugin<Array<void>, Root> = () => () => ({
+    type: 'comment',
+    value: 'things!',
+  })
+  assert.throws(() => {
+    render(() => <Markdown children={input} rehypePlugins={[plugin]} />)
+  }, /Expected a `root` node/)
 })
 
 describe('Specific children', () => {
