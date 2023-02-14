@@ -1,13 +1,12 @@
+import type { Root } from 'hast'
+import { toJsxRuntime, type Options as hastToJsxOptions } from 'hast-util-to-jsx-runtime'
+import remarkGfm from 'remark-gfm'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import { children, createMemo, mergeProps, ParentComponent, Show } from 'solid-js'
-import { PluggableList, unified } from 'unified'
-import { VFile } from 'vfile'
-import { toJsxRuntime, type Options as hastToJsxOptions } from 'hast-util-to-jsx-runtime'
 import { Fragment, jsx, jsxs } from 'solid-jsx'
-import rehypeFilter, { Options as FilterOptions } from './rehype-filter'
-import type { Root } from 'hast'
-import remarkGfm from 'remark-gfm'
+import { PluggableList, Processor, unified } from 'unified'
+import { VFile } from 'vfile'
 
 type PluginOptions = {
   remarkPlugins: PluggableList
@@ -18,16 +17,12 @@ type LayoutOptions = {
   class: string
 }
 
-type SolidRemarkProps = PluginOptions & LayoutOptions & FilterOptions
+type SolidRemarkProps = PluginOptions & LayoutOptions
 
 const defaults: SolidRemarkProps = {
   remarkPlugins: [],
   rehypePlugins: [],
 
-  unwrapDisallowed: false,
-  disallowedElements: undefined,
-  allowedElements: undefined,
-  allowElement: undefined,
   class: '',
 }
 
@@ -53,8 +48,7 @@ const SolidRemark: ParentComponent<Partial<SolidRemarkProps>> = (props) => {
       .use(options.remarkPlugins || [])
       .use(remarkGfm)
       .use(remarkRehype, { allowDangerousHtml: true })
-      .use(options.rehypePlugins || [])
-      .use(rehypeFilter, options)
+      .use(options.rehypePlugins || []) as Processor<Root, Root, Root, void>
 
     const file = new VFile()
 
