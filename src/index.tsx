@@ -3,27 +3,16 @@ import { toJsxRuntime, type Options as hastToJsxOptions } from 'hast-util-to-jsx
 import remarkGfm from 'remark-gfm'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
-import { children, createMemo, mergeProps, ParentComponent, Show } from 'solid-js'
+import { children, createMemo, ParentComponent, Show } from 'solid-js'
 import { Fragment, jsx, jsxs } from 'solid-jsx'
+import { Dynamic } from 'solid-js/web'
 import { PluggableList, Processor, unified } from 'unified'
 import { VFile } from 'vfile'
 
-type PluginOptions = {
-  remarkPlugins: PluggableList
-  rehypePlugins: PluggableList
-}
-
-type LayoutOptions = {
-  class: string
-}
-
-type SolidRemarkProps = PluginOptions & LayoutOptions
-
-const defaults: SolidRemarkProps = {
-  remarkPlugins: [],
-  rehypePlugins: [],
-
-  class: '',
+type SolidRemarkProps = {
+  remarkPlugins?: PluggableList
+  rehypePlugins?: PluggableList
+  class?: string
 }
 
 const astToElement = (ast: Root) => {
@@ -38,23 +27,21 @@ const astToElement = (ast: Root) => {
 }
 
 const SolidRemark: ParentComponent<Partial<SolidRemarkProps>> = (props) => {
-  const options = mergeProps(defaults, props)
-
-  const c = children(() => options.children)
+  const c = children(() => props.children)
 
   const hastNode = createMemo(() => {
     const processor = unified()
       .use(remarkParse)
-      .use(options.remarkPlugins || [])
+      .use(props.remarkPlugins || [])
       .use(remarkGfm)
       .use(remarkRehype, { allowDangerousHtml: true })
-      .use(options.rehypePlugins || []) as Processor<Root, Root, Root, void>
+      .use(props.rehypePlugins || []) as Processor<Root, Root, Root, void>
 
     const file = new VFile()
 
     if (typeof c() === 'string') {
       file.value = c() as string
-    } else if (c() !== undefined && options.children !== null) {
+    } else if (c() !== undefined && props.children !== null) {
       console.warn(
         `[solid-markdown] Warning: please pass a string as \`children\` (not: \`${c()}\`)`
       )
@@ -68,12 +55,11 @@ const SolidRemark: ParentComponent<Partial<SolidRemarkProps>> = (props) => {
 
     return hastNode
   })
-
   return (
     <Show when={hastNode().type === 'root'}>
-      <div class={options.class}>
-        <div>{astToElement(hastNode())}</div>
-      </div>
+      <Dynamic component={props.class ? 'div' : Fragment} class={props.class}>
+        {astToElement(hastNode())}
+      </Dynamic>
     </Show>
   )
 }
