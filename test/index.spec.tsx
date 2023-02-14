@@ -1,6 +1,6 @@
 /// <reference types="vitest/globals"/>
 import { render } from '@solidjs/testing-library'
-import Markdown from './index'
+import Markdown from '../src/index'
 
 test('can render the most basic of documents (single paragraph)', () => {
   const { asFragment } = render(() => <Markdown>Test</Markdown>)
