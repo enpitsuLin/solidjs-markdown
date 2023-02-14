@@ -1,1 +1,3 @@
-# solid-markdown
+# solidjs-markdown
+
+Solidjs component to render markdown.
