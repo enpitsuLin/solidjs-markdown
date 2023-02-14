@@ -12,6 +12,10 @@ export default defineConfig({
     globals: true,
     setupFiles: ['node_modules/@testing-library/jest-dom/extend-expect', './setupVitest.js'],
     transformMode: { web: [/\.[jt]sx?$/] },
+    coverage: {
+      provider: 'c8',
+      reporter: ['json', 'json-summary', 'text'],
+    },
   },
   resolve: {
     conditions: ['development', 'browser'],
