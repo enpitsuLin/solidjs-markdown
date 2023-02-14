@@ -1,6 +1,5 @@
 import type { Root } from 'hast'
 import { toJsxRuntime, type Options as hastToJsxOptions } from 'hast-util-to-jsx-runtime'
-import remarkGfm from 'remark-gfm'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import { children, createMemo, ParentComponent, Show } from 'solid-js'
@@ -33,7 +32,6 @@ const SolidRemark: ParentComponent<Partial<SolidRemarkProps>> = (props) => {
     const processor = unified()
       .use(remarkParse)
       .use(props.remarkPlugins || [])
-      .use(remarkGfm)
       .use(remarkRehype, { allowDangerousHtml: true })
       .use(props.rehypePlugins || []) as Processor<Root, Root, Root, void>
 
