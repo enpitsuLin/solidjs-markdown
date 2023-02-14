@@ -1,5 +1,5 @@
 {
-  "name": "solid-gfm",
+  "name": "solid-markdown",
   "version": "0.1.0",
   "description": "",
   "keywords": [
@@ -31,10 +31,13 @@
   ],
   "scripts": {
     "build": "rollup -c rollup.config.js",
+    "test": "vitest",
     "lint": "eslint --fix \"src/**/*.{ts,tsx}\"",
     "style": "prettier -w \"./src/**/*.{ts,tsx}\""
   },
   "devDependencies": {
+    "@solidjs/testing-library": "^0.6.1",
+    "@testing-library/jest-dom": "^5.16.5",
     "@types/hast": "^2.3.4",
     "@types/unist": "^2.0.6",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
@@ -43,11 +46,14 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-solid": "^0.9.4",
+    "jsdom": "^21.1.0",
     "prettier": "^2.8.4",
     "rollup": "^3.15.0",
     "rollup-preset-solid": "^2.0.1",
     "solid-js": "^1.6.10",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "vite-plugin-solid": "^2.5.0",
+    "vitest": "^0.28.5"
   },
   "prettier": {
     "trailingComma": "es5",
