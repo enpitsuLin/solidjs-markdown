@@ -5,34 +5,30 @@ specifiers:
   '@types/unist': ^2.0.6
   '@typescript-eslint/eslint-plugin': ^5.51.0
   '@typescript-eslint/parser': ^5.51.0
-  comma-separated-tokens: ^2.0.3
   eslint: ^8.34.0
   eslint-config-prettier: ^8.6.0
   eslint-plugin-prettier: ^4.2.1
   eslint-plugin-solid: ^0.9.4
+  hast-util-to-jsx-runtime: ^1.2.0
   prettier: ^2.8.4
-  property-information: ^6.2.0
   remark-gfm: ^3.0.1
   remark-parse: ^10.0.1
   remark-rehype: ^10.1.0
   rollup: ^3.15.0
   rollup-preset-solid: ^2.0.1
   solid-js: ^1.6.10
-  space-separated-tokens: ^2.0.2
-  style-to-object: ^0.4.1
+  solid-jsx: ^0.9.1
   typescript: ^4.9.5
   unified: ^10.1.2
   unist-util-visit: ^4.1.2
   vfile: ^5.3.7
 
 dependencies:
-  comma-separated-tokens: 2.0.3
-  property-information: 6.2.0
+  hast-util-to-jsx-runtime: 1.2.0
   remark-gfm: 3.0.1
   remark-parse: 10.0.1
   remark-rehype: 10.1.0
-  space-separated-tokens: 2.0.2
-  style-to-object: 0.4.1
+  solid-jsx: 0.9.1_solid-js@1.6.10
   unified: 10.1.2
   unist-util-visit: 4.1.2
   vfile: 5.3.7
@@ -1877,7 +1873,6 @@ packages:
 
   /csstype/3.1.1:
     resolution: {integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==}
-    dev: true
 
   /debug/4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
@@ -2635,6 +2630,24 @@ packages:
     dependencies:
       function-bind: 1.1.1
     dev: true
+
+  /hast-util-to-jsx-runtime/1.2.0:
+    resolution: {integrity: sha512-Y4FB8Dx2k6zJZrwbexkVm6YVRA8Sho2tTwacjDSr/x5c0wioOpc1VIoLyGUSb8+8xkAnQPAtHbdMvzA6bl0F1w==}
+    dependencies:
+      '@types/hast': 2.3.4
+      '@types/unist': 2.0.6
+      comma-separated-tokens: 2.0.3
+      hast-util-whitespace: 2.0.1
+      property-information: 6.2.0
+      space-separated-tokens: 2.0.2
+      style-to-object: 0.4.1
+      unist-util-position: 4.0.4
+      vfile-message: 3.1.4
+    dev: false
+
+  /hast-util-whitespace/2.0.1:
+    resolution: {integrity: sha512-nAxA0v8+vXSBDt3AnRUNjyRIQ0rD+ntpbAp4LnPkumc5M9yUbSMa4XDU9Q6etY4f1Wp4bNgvc1yjiZtsTTrSng==}
+    dev: false
 
   /html-entities/2.3.3:
     resolution: {integrity: sha512-DV5Ln36z34NNTDgnz0EWGBLZENelNAtkiFA4kyNOG2tDI6Mz1uSWiq1wAKdyjnJwyDiDO7Fa2SO1CTxPXL8VxA==}
@@ -3696,7 +3709,15 @@ packages:
     resolution: {integrity: sha512-Sf0e6PQCEFkFtbPq0L+93Ua81YQOefBEbvDJ0YXT92b6Lzw0k7UvzSd2l1BbYM+yzE3UmepU1tyMDc/3nIByjA==}
     dependencies:
       csstype: 3.1.1
-    dev: true
+
+  /solid-jsx/0.9.1_solid-js@1.6.10:
+    resolution: {integrity: sha512-HHTx58rx3tqg5LMGuQnaE1vqZjpl+RMP0jYQnBkTY0xKIASVNSLZJCZoPFrpKH8wWWYyTLHdepgzs8u/e6yz5Q==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      solid-js: ^1.4.0
+    dependencies:
+      solid-js: 1.6.10
+    dev: false
 
   /source-map-support/0.5.21:
     resolution: {integrity: sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==}
