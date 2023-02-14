@@ -1,12 +1,12 @@
 {
-  "name": "solid-markdown",
+  "name": "solidjs-markdown",
   "version": "0.1.0",
-  "description": "",
+  "description": "Markdown component for SolidJS",
   "keywords": [
-    "solid",
+    "solidjs",
     "markdown",
     "mdx",
-    "solid-component",
+    "solidjs-component",
     "component",
     "remark"
   ],
