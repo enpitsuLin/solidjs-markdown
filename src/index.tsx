@@ -8,25 +8,27 @@ import { Dynamic } from 'solid-js/web'
 import { PluggableList, Processor, unified } from 'unified'
 import { VFile } from 'vfile'
 
-type SolidRemarkProps = {
+type SolidMarkdownProps = {
   remarkPlugins?: PluggableList
   rehypePlugins?: PluggableList
   class?: string
+  components?: hastToJsxOptions['components']
 }
 
-const astToElement = (ast: Root) => {
-  const options = {
-    Fragment,
-    jsx,
-    jsxs,
-    elementAttributeNameCase: 'html',
-    stylePropertyNameCase: 'css',
-  } as unknown as hastToJsxOptions
-  return toJsxRuntime(ast, options)
-}
-
-const SolidRemark: ParentComponent<Partial<SolidRemarkProps>> = (props) => {
+const SolidRemark: ParentComponent<Partial<SolidMarkdownProps>> = (props) => {
   const c = children(() => props.children)
+
+  const astToElement = (ast: Root) => {
+    const options: hastToJsxOptions = {
+      Fragment,
+      jsx,
+      jsxs,
+      elementAttributeNameCase: 'html',
+      stylePropertyNameCase: 'css',
+      components: props.components,
+    } as unknown as hastToJsxOptions
+    return toJsxRuntime(ast, options)
+  }
 
   const hastNode = createMemo(() => {
     const processor = unified()
