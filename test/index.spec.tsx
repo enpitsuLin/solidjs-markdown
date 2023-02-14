@@ -33,7 +33,7 @@ describe('Specific children', () => {
     render(() => <Markdown children={1} />)
 
     expect(errorSpy).toHaveReturnedWith(
-      '[solid-markdown] Warning: please pass a string as `children` (not: `1`)'
+      '[solidjs-markdown] Warning: please pass a string as `children` (not: `1`)'
     )
   })
 
@@ -45,7 +45,7 @@ describe('Specific children', () => {
     ))
 
     expect(errorSpy).toHaveReturnedWith(
-      '[solid-markdown] Warning: please pass a string as `children` (not: `[object HTMLHeadingElement]`)'
+      '[solidjs-markdown] Warning: please pass a string as `children` (not: `[object HTMLHeadingElement]`)'
     )
   })
 

@@ -15,7 +15,7 @@ type SolidMarkdownProps = {
   components?: hastToJsxOptions['components']
 }
 
-const SolidRemark: ParentComponent<Partial<SolidMarkdownProps>> = (props) => {
+const SolidjsMarkdown: ParentComponent<Partial<SolidMarkdownProps>> = (props) => {
   const c = children(() => props.children)
 
   const astToElement = (ast: Root) => {
@@ -43,7 +43,7 @@ const SolidRemark: ParentComponent<Partial<SolidMarkdownProps>> = (props) => {
       file.value = c() as string
     } else if (c() !== undefined && props.children !== null) {
       console.warn(
-        `[solid-markdown] Warning: please pass a string as \`children\` (not: \`${c()}\`)`
+        `[solidjs-markdown] Warning: please pass a string as \`children\` (not: \`${c()}\`)`
       )
     }
 
@@ -64,4 +64,4 @@ const SolidRemark: ParentComponent<Partial<SolidMarkdownProps>> = (props) => {
   )
 }
 
-export default SolidRemark
+export default SolidjsMarkdown
