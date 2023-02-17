@@ -56,6 +56,8 @@
     "eslint-plugin-solid": "^0.9.4",
     "jsdom": "^21.1.0",
     "prettier": "^2.8.4",
+    "rehype-prism-plus": "^1.5.1",
+    "remark-gfm": "^3.0.1",
     "rollup": "^3.15.0",
     "rollup-preset-solid": "^2.0.1",
     "solid-js": "^1.6.10",
