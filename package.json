@@ -21,11 +21,11 @@
     "dist"
   ],
   "scripts": {
-    "dev": "",
     "build": "tsup",
     "lint": "eslint --fix \"src/**/*.{ts,tsx}\"",
     "style": "prettier -w \"./src/**/*.{ts,tsx}\"",
     "test": "vitest",
+    "test:ssr": "vitest --mode ssr",
     "coverage": "vitest run --coverage"
   },
   "prettier": {
