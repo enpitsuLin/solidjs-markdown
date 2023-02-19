@@ -46,7 +46,6 @@
   },
   "devDependencies": {
     "@solidjs/testing-library": "^0.6.1",
-    "@testing-library/jest-dom": "^5.16.5",
     "@types/hast": "^2.3.4",
     "@types/unist": "^2.0.6",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
