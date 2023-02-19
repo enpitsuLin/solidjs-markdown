@@ -1,6 +1,6 @@
 {
   "name": "solidjs-markdown",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Markdown component for SolidJS",
   "keywords": [
     "solidjs",
@@ -26,7 +26,8 @@
     "style": "prettier -w \"./src/**/*.{ts,tsx}\"",
     "test": "vitest",
     "test:ssr": "vitest --mode ssr",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "prepublishOnly": "npm run build"
   },
   "prettier": {
     "bracketSpacing": true,
