@@ -6,5 +6,8 @@ export default defineConfig(
   },
   {
     dropConsole: true,
+    esbuildOptions: (options) => {
+      options.sourcemap = true
+    },
   }
 )
